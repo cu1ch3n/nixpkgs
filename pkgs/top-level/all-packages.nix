@@ -16319,6 +16319,10 @@ with pkgs;
     inherit (darwin.apple_sdk.frameworks) CoreFoundation Security SystemConfiguration;
     llvm_15 = llvmPackages_15.libllvm;
   };
+  rust_1_72 = callPackage ../development/compilers/rust/1_72.nix {
+    inherit (darwin.apple_sdk.frameworks) CoreFoundation Security SystemConfiguration;
+    llvm_16 = llvmPackages_16.libllvm;
+  };
   rust = rust_1_69;
 
   mrustc = callPackage ../development/compilers/mrustc { };
@@ -16328,6 +16332,7 @@ with pkgs;
   };
 
   rustPackages_1_69 = rust_1_69.packages.stable;
+  rustPackages_1_72 = rust_1_72.packages.stable;
   rustPackages = rustPackages_1_69;
 
   inherit (rustPackages) cargo cargo-auditable cargo-auditable-cargo-wrapper clippy rustc rustPlatform;
